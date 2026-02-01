@@ -1,0 +1,15 @@
+root = "."
+tmp_dir = "bin"
+
+[build]
+  bin = "./bin/main"
+  cmd = "go build -o ./bin/main ./cmd/analytics/main.go"
+  delay = 1000
+  exclude_dir = ["tmp", "data", "docker", "bin", "export"]
+  exclude_regex = ["_test.go"]
+  include_ext = ["go"]
+  log = "build-errors.log"
+  full_bin = "echo 'Build successful at' $(date) '- Waiting for you to run ./bin/main'"
+  
+[log]
+  time = false

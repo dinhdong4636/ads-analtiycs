@@ -18,7 +18,6 @@ dist/
 go.work
 
 # Data files
-*.csv
 data/
 
 # IDE
