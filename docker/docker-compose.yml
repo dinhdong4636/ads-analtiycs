@@ -1,0 +1,26 @@
+services:
+  analytics-dev:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: development
+    image: ads-analytics:dev
+    container_name: ads-analytics-dev
+    environment:
+      - UID=${UID:-1000}
+      - GID=${GID:-1000}
+      - HOME=/home/${USER:-hostuser}
+      - GOCACHE=/home/${USER:-hostuser}/.cache/go-build
+    volumes:
+      - ../:/app
+      - go-mod-cache:/go/pkg/mod
+      - go-build-cache:/home/${USER:-hostuser}/.cache/go-build
+      - go-bin:/go/bin
+    working_dir: /app
+    stdin_open: true
+    tty: true
+
+volumes:
+  go-mod-cache:
+  go-build-cache:
+  go-bin:
